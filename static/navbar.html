@@ -1,0 +1,50 @@
+<!-- navbar.html -->
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="study-materials.html">Study Materials</a></li>
+    <li><a href="about-me.html">About Me</a></li>
+  </ul>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 5px rgba(0, 229, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    padding: 15px 0;
+    margin: 0;
+  }
+
+  nav a {
+    color: #7eba72;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    background-color: #bede87;
+    color: #121212;
+    outline: none;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #00e5ff;
+  }
+</style>

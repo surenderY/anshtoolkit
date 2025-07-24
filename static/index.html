@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ansh Yerram Home Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 200px; /* For fixed navbar */
+    }
+
+    /* Container for main content */
+    .container {
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #00e5ff;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #bbbbbb;
+      margin-bottom: 30px;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-button {
+      padding: 18px;
+      background-color: #1e1e1e;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+    }
+
+    .menu-button:hover {
+      background-color: #233d3f;
+      color: #121212;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Responsive text scaling */
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 28px;
+      }
+      .menu-button {
+        font-size: 14px;
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+ 
+  <div class="container">
+    <h1>Welcome, Student!</h1>
+    <p>Choose what you'd like to do today:</p>
+
+    <div class="menu">
+      <button class="menu-button" onclick="goTo('calculator')">🧮 Calculator</button>
+      <button class="menu-button" onclick="goTo('games')">🎮 Games</button>
+      <button class="menu-button" onclick="goTo('notes')">📝 Notes</button>
+      <button class="menu-button" onclick="goTo('learn')">📘 Learn</button>
+    </div>
+
+    <footer>Made for curious minds ✨</footer>
+  </div>
+
+  <script>
+    function goTo(page) {
+      // Replace alert with real navigation:
+      window.location.href = page + ".html";
+    }
+  </script>
+
+  <script>
+    // Function to load navbar.html and insert it into the page
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+        highlightCurrentPage();
+      })
+      .catch(err => {
+        console.error('Failed to load navbar:', err);
+      });
+
+    // Highlight the current page's link
+    function highlightCurrentPage() {
+      const navLinks = document.querySelectorAll('#navbar-placeholder nav a');
+      const currentURL = window.location.pathname.split('/').pop();
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentURL) {
+          link.setAttribute('aria-current', 'page');
+          link.style.backgroundColor = '#00e5ff';
+          link.style.color = '#121212';
+          link.style.transform = 'scale(1.1)';
+          link.style.boxShadow = '0 0 10px #00e5ff';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

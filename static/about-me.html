@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Me - Student</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    
+
+    main {
+      max-width: 600px;
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #00e5ff;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #ccc;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .photo {
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(135deg, #00e5ff, #006b7f);
+      border-radius: 50%;
+      margin: 0 auto 25px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 48px;
+      color: #121212;
+      user-select: none;
+      box-shadow: 0 0 20px #00e5ff;
+    }
+
+    footer {
+      margin-top: auto;
+      font-size: 12px;
+      color: #666;
+      padding-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="photo">🙂</div>
+    <h1>About Me</h1>
+    <p>Hello! My name is Ansh Yerram, and I am a middle school student who loves learning new things every day.</p>
+    <p>Some of my favorite subjects are science and math. I enjoy solving puzzles, playing games, and reading books about space and animals.</p>
+    <p>When I'm not studying, I like to play soccer and cricket with my friends and try out coding small projects like this website!</p>
+  </main>
+
+  <footer>
+    Made for curious minds ✨
+  </footer>
+
+  <script>
+    // Function to load navbar.html and insert it into the page
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+        highlightCurrentPage();
+      })
+      .catch(err => {
+        console.error('Failed to load navbar:', err);
+      });
+
+    // Highlight the current page's link
+    function highlightCurrentPage() {
+      const navLinks = document.querySelectorAll('#navbar-placeholder nav a');
+      const currentURL = window.location.pathname.split('/').pop();
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentURL) {
+          link.setAttribute('aria-current', 'page');
+          link.style.backgroundColor = '#00e5ff';
+          link.style.color = '#121212';
+          link.style.transform = 'scale(1.1)';
+          link.style.boxShadow = '0 0 10px #00e5ff';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

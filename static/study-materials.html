@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Study Materials - Student</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    main {
+      max-width: 700px;
+      margin-top: 80px;
+      width: 90%;
+    }
+
+    h1 {
+      color: #00e5ff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #40c4ff;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #00e5ff;
+      padding-bottom: 6px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      background-color: #1e1e1e;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      padding: 12px 16px;
+      box-shadow: 0 0 8px rgba(0, 229, 255, 0.15);
+      transition: transform 0.2s ease;
+    }
+
+    li:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    }
+
+    a.site-link {
+      color: #00e5ff;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    a.site-link:hover,
+    a.site-link:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    p.description {
+      margin-top: 4px;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: auto;
+      font-size: 12px;
+      color: #666;
+      padding-bottom: 15px;
+      text-align: center;
+      width: 100%;
+    }
+
+    @media (max-width: 480px) {
+      main {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <h1>Study Materials & Fun Websites</h1>
+
+    <section>
+      <h2>Educational Websites</h2>
+      <ul>
+        <li>
+          <a href="https://www.khanacademy.org" target="_blank" class="site-link" rel="noopener">Khan Academy</a>
+          <p class="description">Free lessons in math, science, history, and more — with videos and practice exercises.</p>
+        </li>
+        <li>
+          <a href="https://www.coolmathgames.com" target="_blank" class="site-link" rel="noopener">Cool Math Games</a>
+          <p class="description">Fun games that help you practice logic, math skills, and problem-solving.</p>
+        </li>
+        <li>
+          <a href="https://www.nationalgeographickids.com" target="_blank" class="site-link" rel="noopener">National Geographic Kids</a>
+          <p class="description">Explore amazing facts about animals, geography, science, and the world.</p>
+        </li>
+        <li>
+          <a href="https://www.ducksters.com" target="_blank" class="site-link" rel="noopener">Ducksters</a>
+          <p class="description">Simple and easy-to-read articles about history, science, and geography.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Fun Activity Websites</h2>
+      <ul>
+        <li>
+          <a href="https://www.funbrain.com" target="_blank" class="site-link" rel="noopener">Funbrain</a>
+          <p class="description">Games, books, and videos to make learning fun and exciting.</p>
+        </li>
+        <li>
+          <a href="https://www.pbs.org/parents/thrive" target="_blank" class="site-link" rel="noopener">PBS Parents</a>
+          <p class="description">Activities and games for kids to explore creativity and learn new skills.</p>
+        </li>
+        <li>
+          <a href="https://www.nick.com/games" target="_blank" class="site-link" rel="noopener">Nickelodeon Games</a>
+          <p class="description">Play games with your favorite Nick characters while sharpening your skills.</p>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>Made for curious minds ✨</footer>
+  <script>
+    // Function to load navbar.html and insert it into the page
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+        highlightCurrentPage();
+      })
+      .catch(err => {
+        console.error('Failed to load navbar:', err);
+      });
+
+    // Highlight the current page's link
+    function highlightCurrentPage() {
+      const navLinks = document.querySelectorAll('#navbar-placeholder nav a');
+      const currentURL = window.location.pathname.split('/').pop();
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentURL) {
+          link.setAttribute('aria-current', 'page');
+          link.style.backgroundColor = '#00e5ff';
+          link.style.color = '#121212';
+          link.style.transform = 'scale(1.1)';
+          link.style.boxShadow = '0 0 10px #00e5ff';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
